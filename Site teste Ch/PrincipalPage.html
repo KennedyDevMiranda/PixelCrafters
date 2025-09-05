@@ -1,1 +1,258 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Landing page simples, moderna e responsiva para seu negócio ou portifólio."/>
+        <title>Pixel Crafter</title>
+        <style>
+            :root{
+                --bg:#0f1221;       /* Fundo */
+                --card:#151935;     /* Cartões */
+                --text:#e6e8ff;     /* Texto principal */
+                --muted:#a9add6;    /* Texto segundário */
+                --brand:#6c8bff;    /* Cor de destaque */
+                --brand-2:#7ff0ff;  /* Gradiente */
+                --ok:#3ddc97;       /* Sucesso */
+                --danger:#ff6b6b;   /* Erros */
+                --radius:18px;
+                --shadow:0 10px 30px rgb(0,0,0,.25);
+                --max:1100px;
+            }
+            *{box-sizing:border-box;}
+            html,body{margin:0; padding:0; font-family: system-ui, apple-system, Segoe UI, Roboto, Ubuntu, Centarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: linear-gradient(180deg,#0b0e1a, var(--bg)); color:var(--text)}
+            a{color:inherit; text-decoration:none}
+            img{max-width:100%; display:block}
+            .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+            /* NAV */
+            .nav{position:sticky; top:0; backdrop-filter:saturate(140%) blur(12px); background:rgba(11,14,26,.6); border-bottom:1px solid rgba(255,255,255,.06); z-index:50}
+            .nav .inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+            .logo{display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.3px}
+            .logoMark{width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow)}
+            .menu{display:flex; gap:22px}
+            .menu a{opacity:.85}
+            .menu a:hover{opacity:1}
+            .cta{padding:10px 16px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0e1a; font-weight:700}
+
+            /* HERO */
+            .hero{padding:72px 0 40px}
+            .hero .inner{display:grid; grid-template-columns: 1.2fr 1fr; gap:36px; align-items:center}
+            .badge{display:inline-flex; gap:10px; align-items:center; background:rgba(124,139,255,.12); border:1px solid rgba(124,139,255,.25); color:#cdd4ff; padding:8px 12px; border-radius:999px; font-size:14px}
+            h1{font-size: clamp(28px,4.2vw,48px); line-height:1.1; margin:16px 0}
+            .lead{font-size: clamp(15px,2.2vw,18px); color:var(--muted)}
+            .actions{display:flex; gap:14px; margin-top:22px}
+            .btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:var(--card); color:var(--text); font-weight:600}
+            .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0e1a; border:none}
+
+            .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
+            .mock{aspect-ratio: 16/10; border-radius:var(--radius); background:radial-gradient(1200px 500px at -10% -20%,rgba(127,240,255,.25), transparent 60%), radial-gradient(800px 400px at 120% 120%, rgba(108,139,255,.22), transparent 60%), #0c0f20; display:grid; place-items:center; overflow:hidden}
+            .mockInner{width:86%; height:70%; border-radius:14px; background:#0e1226; border:1px solid rgba(255,255,255,.08); position:relative}
+            .mockInner::after{content:"Seu produto em destaque"; position:absolute; inset:auto 0 0; margin:0 auto 14px; text-align:center; font-size:14px; color:var(--muted)}
+
+            /* FEATURES */
+            .section{padding:64px 0}
+            .section h2{font-size: clamp(22px,3vw,34px); margin:0 0 18px}
+            .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+            .feature{padding:18px}
+            .feature h3{margin:10px 0 6px; font-size:18px}
+            .icon{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; font-weight:900; color:#0b0e1a}
+            .muted{color:var(--muted)}
+
+            /* PRICING */
+            .pricing{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
+            .plan{padding:22px}
+            .price{font-size:30px; font-weight:800}
+            .plan ul{list-style:none; padding:0; margin:12px 0 0}
+            .plan li{padding:6px 0; display:flex; gap:10px; align-items:center}
+            .ok{width:10px; height:10px; border-radius:3px; background:var(--ok)}
+
+            /* CONTACT */
+            form{display:grid; gap:10px}
+            input, textarea{background:#0e1226; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:12px 14px; border-radius:12px; outline:none}
+            input:focus, textarea:focus{border-color:var(--brand)}
+
+            /* FOOTER */
+            footer{padding:30px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.08)}
+
+            /* RESPONSIVO */
+            @media (max-width: 900px){
+            .hero .inner{grid-template-columns:1fr}
+            .grid{grid-template-columns:1fr}
+            .pricing{grid-template-columns:1fr}
+            .actions{flex-wrap:wrap}
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav class="nav">
+            <div class="container inner">
+                <div class="logo">
+                    <div class="logoMark" aria-hidden="true"></div>
+                        <span>Seu<span style="color:var(--brand-2)">Logo</span></span>
+                        </div>
+                        <div class="menu">
+                        <a href="#features">Recursos</a>
+                        <a href="#planos">Planos</a>
+                        <a href="#contato">Contato</a>
+                <a class="cta" href="#contato">Começar</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container inner">
+            <div>
+                <span class="badge">Novo • Site rápido, bonito e responsivo</span>
+                    <h1>Apresente seu produto ou serviço com uma página clara e persuasiva.</h1>
+                        <p class="lead">Estrutura pronta para conversão: destaque principal, benefícios, prova social, planos e um formulário de contato simples.</p>
+                            <div class="actions">
+                            <a class="btn primary" href="#planos">Ver Planos</a>
+                            <a class="btn" href="#features">Ver Recursos</a>
+                            </div>
+                        </div>
+                    <div class="card mock">
+                <div class="mockInner"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+<section id="features" class="section">
+<div class="container">
+<h2>Recursos essenciais</h2>
+<p class="muted">Tudo que você precisa para lançar hoje e evoluir amanhã.</p>
+<div class="grid">
+<article class="card feature">
+<div class="icon">⚡</div>
+<h3>Carregamento rápido</h3>
+<p class="muted">HTML + CSS puros, sem dependências pesadas.</p>
+</article>
+<article class="card feature">
+<div class="icon">📱</div>
+<h3>Totalmente responsivo</h3>
+<p class="muted">Funciona bonito no celular, tablet e desktop.</p>
+</article>
+<article class="card feature">
+<div class="icon">🔎</div>
+<h3>SEO básico</h3>
+<p class="muted">Estrutura semântica e meta tags essenciais.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL PROOF (opcional) -->
+<section class="section" aria-label="Depoimentos">
+<div class="container">
+<div class="card" style="padding:22px">
+<p style="margin:0" class="muted"><em>“Simples, direto e com visual profissional. Em minutos coloquei meu produto no ar.”</em> — <strong>Cliente satisfeito</strong></p>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="planos" class="section">
+<div class="container">
+<h2>Planos simples</h2>
+<p class="muted">Comece grátis e evolua quando precisar.</p>
+<div class="pricing">
+<div class="card plan">
+<h3>Start</h3>
+<p class="price">R$ 0</p>
+<ul>
+<li><span class="ok"></span> 1 página</li>
+<li><span class="ok"></span> Layout responsivo</li>
+<li><span class="ok"></span> SEO básico</li>
+</ul>
+<div style="margin-top:16px"><a class="btn" href="#contato">Começar</a></div>
+</div>
+<div class="card plan" style="outline:2px solid rgba(127,240,255,.35)">
+<h3>Pro</h3>
+<p class="price">R$ 49/mês</p>
+<ul>
+<li><span class="ok"></span> Até 5 seções</li>
+<li><span class="ok"></span> Formulário com validação</li>
+<li><span class="ok"></span> Suporte por e‑mail</li>
+</ul>
+<div style="margin-top:16px"><a class="btn primary" href="#contato">Escolher Pro</a></div>
+</div>
+<div class="card plan">
+<h3>Business</h3>
+<p class="price">R$ 149/mês</p>
+<ul>
+<li><span class="ok"></span> Blog/Artigos</li>
+<li><span class="ok"></span> Otimização avançada</li>
+<li><span class="ok"></span> Integrações</li>
+</ul>
+<div style="margin-top:16px"><a class="btn" href="#contato">Falar com vendas</a></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contato" class="section">
+<div class="container">
+<div class="grid">
+<div>
+<h2>Fale com a gente</h2>
+<p class="muted">Preencha e retornaremos em breve.</p>
+<form id="form">
+<input type="text" name="nome" placeholder="Seu nome" required />
+<input type="email" name="email" placeholder="Seu e‑mail" required />
+<textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
+<button class="btn primary" type="submit">Enviar</button>
+<p id="status" class="muted" aria-live="polite" style="margin:6px 0 0"></p>
+</form>
+</div>
+<div class="card" style="padding:22px">
+<h3>Endereço</h3>
+<p class="muted">Rua Exemplo, 123 – Sua Cidade/UF</p>
+<h3 style="margin-top:14px">Contato</h3>
+<p class="muted">email@seusite.com<br/> (00) 00000‑0000</p>
+<h3 style="margin-top:14px">Horários</h3>
+<p class="muted">Seg a Sex: 9h–18h</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+<span>© <span id="year"></span> Seu Site. Todos os direitos reservados.</span>
+<span class="muted">Feito com ♥ e café.</span>
+</div>
+</footer>
+
+<script>
+// Ano automático no rodapé
+document.getElementById('year').textContent = new Date().getFullYear();
+
+
+// Validação simples do formulário (exemplo local)
+const form = document.getElementById('form');
+const status = document.getElementById('status');
+form.addEventListener('submit', (e)=>{
+e.preventDefault();
+const data = Object.fromEntries(new FormData(form));
+// Validação básica
+if(!data.nome || !data.email || !data.mensagem){
+status.textContent = 'Preencha todos os campos.';
+status.style.color = 'var(--danger)';
+return;
+}
+// Simulação de envio
+status.textContent = 'Enviando...';
+status.style.color = 'var(--muted)';
+setTimeout(()=>{
+status.textContent = 'Mensagem enviada com sucesso!';
+status.style.color = 'var(--ok)';
+form.reset();
+}, 600);
+});
+</script>
+</body>
+</html>
